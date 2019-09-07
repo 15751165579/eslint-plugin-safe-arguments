@@ -4,7 +4,7 @@ const RuleTester = require('eslint').RuleTester;
 RuleTester.setDefaultConfig({ parser: 'babel-eslint' });
 
 const error = {
-  type: 'ExpressionStatement',
+  type: 'CallExpression',
   message: 'Math.max or Math.min at least two parameters',
 }
 
@@ -17,7 +17,8 @@ ruleTester.run('max-and-min', rule, {
     'Math.max.call(null, 10, 20)',
     'Math.min.call(null, 20, 30)',
     'Math.max.apply(null, [20, 30])',
-    'Math.min.apply(null, [20, 10])'
+    'Math.min.apply(null, [20, 10])',
+    'const s = Math.max(20, s)'
   ],
   invalid: [
     {
@@ -53,6 +54,11 @@ ruleTester.run('max-and-min', rule, {
     {
       code: 'Math.min.apply(this, 20)',
       output: 'Math.min.apply(this, 20)',
+      errors: [error]
+    },
+    {
+      code: 'const s = Math.max(20)',
+      output: 'const s = Math.max(20)',
       errors: [error]
     }
   ]
