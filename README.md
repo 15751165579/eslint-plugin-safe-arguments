@@ -1,5 +1,8 @@
 # eslint-plugin-safe-arguments
 
+[![NPM version](https://img.shields.io/npm/v/eslint-plugin-safe-arguments.svg?style=flat)](https://npmjs.org/package/eslint-plugin-safe-arguments)
+[![NPM downloads](http://img.shields.io/npm/dm/eslint-plugin-safe-arguments.svg?style=flat)](https://npmjs.org/package/eslint-plugin-safe-arguments)
+
 check function arguments
 
 ## Installation
